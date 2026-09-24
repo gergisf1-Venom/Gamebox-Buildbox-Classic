@@ -43,4 +43,4 @@ if (!cfg.plugin.includes(PKG)) {
 } else {
   console.log(`"${PKG}" is already in plugin[] in ${file}`);
 }
-console.log("Restart OpenCode, then type /gamebox- for the 5 commands.");
+console.log("Restart OpenCode, then type /gamebox- for the 6 commands.");
