@@ -1,0 +1,30 @@
+{
+  "name": "gamebox-buildbox-classic",
+  "version": "1.0.0",
+  "description": "Gamebox Buildbox Classic — OpenCode plugin with 5 summonable /gamebox-xxx skills for Buildbox-exported Android builds (env, scan-fix, test-apk, aab-publish, listing-assets).",
+  "type": "module",
+  "main": "./src/index.js",
+  "bin": {
+    "gamebox-install": "./bin/install.mjs"
+  },
+  "files": [
+    "skills/",
+    "commands/",
+    "src/",
+    "bin/",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "buildbox",
+    "android",
+    "google-play"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gergisf1-Venom/Gamebox-Buildbox-Classic.git"
+  }
+}
