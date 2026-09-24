@@ -1,7 +1,7 @@
 {
   "name": "gamebox-buildbox-classic",
   "version": "1.0.0",
-  "description": "Gamebox Buildbox Classic — OpenCode plugin with 5 summonable /gamebox-xxx skills for Buildbox-exported Android builds (env, scan-fix, test-apk, aab-publish, listing-assets).",
+  "description": "Gamebox Buildbox Classic — OpenCode plugin with 6 summonable /gamebox-xxx skills for Buildbox-exported Android builds (env, scan-fix, update, test-apk, aab-publish, listing-assets).",
   "type": "module",
   "main": "./src/index.js",
   "bin": {
@@ -10,6 +10,7 @@
   "files": [
     "skills/",
     "commands/",
+    "tools/",
     "src/",
     "bin/",
     "README.md",

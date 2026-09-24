@@ -6,7 +6,7 @@ description: Use when user invokes /gamebox-env or asks to verify machine setup 
 
 
 # 🎮 GAMEBOX-ENV — Environment Check (+ Emulator Ready)
-**GameBox V2.0 | Skill 1 of 5**
+**GameBox V2.0 | Skill 1 of 6**
 **Scope:** Machine-wide. Runs ONCE per machine/session — NOT per project.
 **Output:** `./Reports/_ENV/ENV_report.md`
 **Next:** GAMEBOX-SCAN-FIX
@@ -256,7 +256,7 @@ when actually needed.
 # 🎮 GAMEBOX-ENV Report
 **Scope:** Machine-wide (applies to all projects)
 **Generated:** [date time]
-**Skill:** GameBox V2.0 — 1 of 4
+**Skill:** GameBox V2.0 — 1 of 6
 
 ---
 

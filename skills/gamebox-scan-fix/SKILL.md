@@ -5,12 +5,12 @@ description: Use when user invokes /gamebox-scan-fix or asks to scan and fix Bui
 > **Public version:** no hardcoded developer identity ships in this copy. Ask the user for organization name, contact email, and country code at the start of each run - never assume values.
 
 
-# 🎮 GAMEBOX-SCAN-FIX — Scan All Projects & Apply Fixes
-**GameBox V2.0 | Skill 2 of 5**
-**Scope:** ALL Android projects found inside the given parent folder — scanned,
+# 🎮 GAMEBOX-SCAN-FIX — Select, Scan, and Fix Projects
+**GameBox V2.0 | Skill 2 of 6**
+**Scope:** Only the Android projects the user selects from the given parent folder — scanned,
 then fixed ONE PROJECT AT A TIME with user approval.
 **Output:**
-- `./Reports/_SCAN_ALL/SCAN_ALL_report.md` (consolidated scan, all projects)
+- `./Reports/_SCAN_ALL/SCAN_ALL_report.md` (consolidated scan, selected projects)
 - `./Reports/[GameName]/[GameName]_Report.md` (the ONE master report per
   project — created here, appended to by every later skill)
 - `./Reports/[GameName]/_internal/SCAN_data.txt` (machine-readable, not a
@@ -23,10 +23,11 @@ then fixed ONE PROJECT AT A TIME with user approval.
 
 ## PURPOSE
 
-Given a parent folder, auto-detect every Android project inside it, deep-scan
-each one for anything blocking a successful build or Google Play submission,
-produce a consolidated scan report — then **immediately apply fixes** project
-by project with user confirmation.
+Given a parent folder, auto-detect every Android project inside it, show the
+project count and list, let the user select one or multiple projects, deep-scan
+only those selected projects for anything blocking a successful build or Google
+Play submission, produce a consolidated scan report — then **immediately apply
+fixes** project by project with user confirmation.
 
 **PHASE 1 (SCAN)** makes NO changes to any project files.
 **PHASE 2 (FIX)** modifies project files with user approval.
@@ -152,10 +153,18 @@ Auto-detect a folder as an Android project if it contains any of:
 - `settings.gradle` or `settings.gradle.kts`
 - `AndroidManifest.xml` anywhere under it
 
-List all detected projects and ask for confirmation ("Found N projects:
-[list]. Scan all of them?").
+List all detected projects with their count, then let the user select one or
+multiple projects before scanning anything:
 
-For each detected project, derive its **Game Name** (from `strings.xml`
+1. Show: `Found N Android projects:` followed by a numbered list with game/app
+   name when known, package when known, project path, and prior report/state
+   when available.
+2. Use the `question` tool with `multiple: true` so the user can select one or
+   multiple entries. Include an explicit “All N projects” choice.
+3. Do not scan, initialize, modify, or create reports/state for unselected
+   projects.
+
+For each selected project, derive its **Game Name** (from `strings.xml`
 `app_name`, or the folder name if that fails) and create its folder
 structure:
 
@@ -188,7 +197,7 @@ in once scanning finishes.
 
 ---
 
-## SCAN AREAS (run for EACH project)
+## SCAN AREAS (run for EACH selected project)
 
 ### 1. Project Identity
 - Game Name → `res/values/strings.xml` (app_name)
@@ -396,14 +405,16 @@ Number from 001 **within each project** (tasks reset per project).
 
 ## SCAN OUTPUT
 
-### `./Reports/_SCAN_ALL/SCAN_ALL_report.md` (consolidated, all projects)
+### `./Reports/_SCAN_ALL/SCAN_ALL_report.md` (consolidated, selected projects)
 
 ```markdown
 # 🎮 GAMEBOX-SCAN-FIX Report (Scan Phase)
 **Parent Folder:** [path]
-**Projects Scanned:** N
+**Projects Discovered:** N
+**Projects Selected:** M
+**Projects Scanned:** M
 **Generated:** [date time]
-**Skill:** GameBox V2.0 — 2 of 4
+**Skill:** GameBox V2.0 — 2 of 6
 
 ---
 
@@ -432,8 +443,8 @@ scan data file, not duplicated at length in the master report.
 
 ## AFTER SCAN, TELL THE USER:
 
-> `✅ Scan complete across [N] projects. [X] total CRITICAL, [X] HIGH, [X] MEDIUM, [X] LOW.`
-> `Proceeding to Fix Phase — you'll confirm each project separately.`
+> `✅ Scan complete across [M] selected projects ([N] discovered). [X] total CRITICAL, [X] HIGH, [X] MEDIUM, [X] LOW.`
+> `Proceeding to Fix Phase — you'll confirm each selected project separately.`
 
 List every project with 🔴 CRITICAL issues directly in chat, grouped by project name.
 
@@ -749,8 +760,8 @@ Update `_internal/STATE.json`: `"scan": "PASS"`, `"fix": "PASS"` (or
 
 ## AFTER ALL PROJECTS ARE DONE
 
-> `✅ GAMEBOX-SCAN-FIX complete across [N] projects.`
-> `Run GAMEBOX-TEST-APK to re-verify and build a test APK for real-device testing.`
+> `✅ GAMEBOX-SCAN-FIX complete across [M] selected projects.`
+> `Run /gamebox-test-apk to re-verify and build a test APK for real-device testing.`
 
 List any FAILED tasks directly in chat, grouped by project, with manual fix instructions.
 

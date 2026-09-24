@@ -6,7 +6,7 @@ description: Use when user invokes /gamebox-listing-assets or asks to generate P
 
 
 # 🎮 GAMEBOX-LISTING-ASSETS — Play Store Graphics (generic tool)
-**GameBox V2.0 | Skill 5 of 5**
+**GameBox V2.0 | Skill 5 of 6**
 **Scope:** Any game. Called from GAMEBOX-AAB-PUBLISH Phase 4 when screenshots / feature graphic / icon are needed.
 **Tool:** `./tools/play-assets/` (generic — asks for the game at runtime)
 **Key:** `GEMINI_API_KEY` env var or `tools/play-assets/.env`. Never committed, never pasted into reports.

@@ -6,7 +6,7 @@ description: Use when user invokes /gamebox-aab-publish or asks to version, sign
 
 
 # 🎮 GAMEBOX-AAB-PUBLISH — Signed AAB, Privacy, SEO & Detailed Publish Guide
-**GameBox V2.0 | Skill 4 of 5**
+**GameBox V2.0 | Skill 4 of 6**
 **Scope:** One project (the same one just verified in GAMEBOX-TEST-APK).
 **Output:**
 - `./Reports/[GameName]/[GameName]_Report.md` (appended — signing + privacy summary)
