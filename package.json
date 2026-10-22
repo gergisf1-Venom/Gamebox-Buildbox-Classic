@@ -1,13 +1,14 @@
 {
   "name": "gamebox-buildbox-classic",
-  "version": "1.0.0",
-  "description": "Gamebox Buildbox Classic — OpenCode plugin with 6 summonable /gamebox-xxx skills for Buildbox-exported Android builds (env, scan-fix, update, test-apk, aab-publish, listing-assets).",
+  "version": "2.0.0",
+  "description": "Gamebox Buildbox Classic — OpenCode plugin with 6 summonable /gamebox-xxx skills for Buildbox-exported Android builds (env, scan-fix, update, test-apk, aab-publish, listing-assets) plus the GameBox Protocol v2 paste-per-step buyer protocol.",
   "type": "module",
   "main": "./src/index.js",
   "bin": {
     "gamebox-install": "./bin/install.mjs"
   },
   "files": [
+    "protocol/",
     "skills/",
     "commands/",
     "tools/",
