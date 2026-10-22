@@ -49,7 +49,7 @@ npx -y gamebox-buildbox-classic
 
 Then restart OpenCode. (This adds `gamebox-buildbox-classic@latest` to the `plugin[]` array in your global `opencode.json`. Dry run: append `--dry-run`. Project-local instead: run with `--project` inside the project folder.)
 
-> Need OpenCode-agnostic use or just want the docs? Run the protocol in Way 1 instead.
+> If `npx` can't find the package yet (publish just landed or is pending), clone and point OpenCode at the file: add `"plugin": ["file:<path to repo>"]` to your `opencode.json`, or copy `skills/` + `commands/` into your project's `.opencode/` folder.
 
 ### Commands
 
